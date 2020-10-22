@@ -25,7 +25,7 @@ const client: Discord.Client = new Discord.Client();
 let commands: IBotCommand[] = [];
 
 
-let devmode = 1;
+let devmode = 0;
 
 
 

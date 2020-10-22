@@ -29,7 +29,7 @@ const twitchCheckTime = 60 * 1000;
 var urlEncodedParser = bodyParser.urlencoded({ extended: false });
 const client = new Discord.Client();
 let commands = [];
-let devmode = 1;
+let devmode = 0;
 (() => __awaiter(void 0, void 0, void 0, function* () {
     let connString = "";
     if (devmode == 0) {
