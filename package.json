@@ -1,0 +1,26 @@
+{
+  "name": "concierge",
+  "version": "2.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^11.11.5",
+    "axios": "^0.19.2",
+    "big-integer": "^1.6.43",
+    "discord.js": "^12.2.0",
+    "express": "^4.17.1",
+    "http": "0.0.0",
+    "mongoose": "^5.10.0",
+    "request": "^2.88.0",
+    "rss-parser": "^3.9.0",
+    "typescript": "^3.9.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.1"
+  }
+}
