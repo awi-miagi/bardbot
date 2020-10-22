@@ -25,7 +25,7 @@ const client: Discord.Client = new Discord.Client();
 let commands: IBotCommand[] = [];
 
 
-let devmode = 0;
+let devmode = 0; //changes db and parse checks
 
 
 
