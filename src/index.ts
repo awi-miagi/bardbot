@@ -224,15 +224,6 @@ async function checkTwitchStreams() {
 
 
 
-//initial parse
-if (devmode == 0) {
-  parseRSSFeeds();
-  setInterval(parseRSSFeeds, rssCheckTime)
-  checkTwitchStreams();
-  setInterval(checkTwitchStreams, twitchCheckTime)
-}
-
-
 async function handleCommand(msg: Discord.Message, prefix2: string) {
   //split the string into the command and all of the args
   //let command = msg.content.split(" ")[0].replace(prefix2, "");
@@ -282,15 +273,21 @@ function loadCommands(commandsPath: string) {
 
 loadCommands(`${__dirname}/commands`);
 
+//initial parse
+if (devmode == 0) {
+  setInterval(parseRSSFeeds, rssCheckTime)
+  setInterval(checkTwitchStreams, twitchCheckTime)
+}
+
 //discord logged in  
 client.on("ready", () => {
   console.log("Discord Logged On");
+  parseRSSFeeds();
+  checkTwitchStreams();
 })
 
 //log any errors
 client.on("error", console.error);
-
-
 
 
 //guild messages
