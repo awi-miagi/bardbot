@@ -134,7 +134,7 @@ async function checkTwitchStreams() {
         url: 'https://api.twitch.tv/helix/streams',
         params: { user_id: userIDSArray[arrayID] },
         headers: {
-          'Client-ID': 'isw50z56dbmt7e1dltydzcwhnsbyq9',
+          'Client-ID': KeyFile.key.twitchClientID,
           'Authorization': 'Bearer ' + KeyFile.key.twitchAccessToken
         }
       };
@@ -155,7 +155,7 @@ async function checkTwitchStreams() {
               method: 'get',
               url: `https://api.twitch.tv/helix/games?id=${element.game_id}`,
               headers: {
-                'Client-ID': 'isw50z56dbmt7e1dltydzcwhnsbyq9',
+                'Client-ID': KeyFile.key.twitchClientID,
                 'Authorization': 'Bearer ' + KeyFile.key.twitchAccessToken
               }
             };
@@ -168,7 +168,7 @@ async function checkTwitchStreams() {
               method: 'get',
               url: `https://api.twitch.tv/helix/users?id=${element.user_id}`,
               headers: {
-                'Client-ID': 'isw50z56dbmt7e1dltydzcwhnsbyq9',
+                'Client-ID': KeyFile.key.twitchClientID,
                 'Authorization': 'Bearer ' + KeyFile.key.twitchAccessToken
               }
             };

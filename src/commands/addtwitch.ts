@@ -77,7 +77,7 @@ export default class addtwitch implements IBotCommand {
       method: 'get',
       url: `https://api.twitch.tv/helix/users?login=${twitchName}`,
       headers: {
-        'Client-ID': 'isw50z56dbmt7e1dltydzcwhnsbyq9',
+        'Client-ID': KeyFile.key.twitchClientID,
         'Authorization': 'Bearer ' + KeyFile.key.twitchAccessToken
       }
     };
