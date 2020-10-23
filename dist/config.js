@@ -5,6 +5,7 @@ exports.config = {
     "prefix": "?",
     "commands": [
         "help",
+        "setdefaulttwitch",
         "addtwitch",
         "removetwitch",
         "twitchlist",
@@ -14,7 +15,8 @@ exports.config = {
         "rsslist",
         "prefix",
         "setprefix",
-        "setpermission"
+        "setpermission",
+        "unsetpermission"
     ],
 };
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiY29uZmlnLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiLi4vc3JjL2NvbmZpZy50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7QUFBVyxRQUFBLE1BQU0sR0FBRztJQUNoQixRQUFRLEVBQUUsR0FBRztJQUNiLFVBQVUsRUFBQztRQUNQLE1BQU07UUFDTixXQUFXO1FBQ1gsY0FBYztRQUNkLFlBQVk7UUFDWixRQUFRO1FBQ1IsV0FBVztRQUNYLE9BQU87UUFDUCxTQUFTO1FBQ1QsUUFBUTtRQUNSLFdBQVc7UUFDWCxlQUFlO0tBQ2xCO0NBQ0osQ0FBQSJ9
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiY29uZmlnLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiLi4vc3JjL2NvbmZpZy50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7QUFBVyxRQUFBLE1BQU0sR0FBRztJQUNoQixRQUFRLEVBQUUsR0FBRztJQUNiLFVBQVUsRUFBQztRQUNQLE1BQU07UUFDTixrQkFBa0I7UUFDbEIsV0FBVztRQUNYLGNBQWM7UUFDZCxZQUFZO1FBQ1osUUFBUTtRQUNSLFdBQVc7UUFDWCxPQUFPO1FBQ1AsU0FBUztRQUNULFFBQVE7UUFDUixXQUFXO1FBQ1gsZUFBZTtRQUNmLGlCQUFpQjtLQUNwQjtDQUNKLENBQUEifQ==

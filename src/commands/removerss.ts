@@ -22,18 +22,22 @@ export default class removerss implements IBotCommand {
             return;
         }
 
+        let hasPermission = "FALSE";
+
         let permissionGuild = await GuildModel.findOne({ id: msgObject.guild.id, "commandpermissions.command": this._command });
-        let permissions = await permissionGuild.commandpermissions;
-        var hasPermission = "FALSE";
-
-        hasPermission = permissions.map((item: { command: any; role: string; }) => {
-            if (item.command == this._command && msgObject.member.roles.cache.has(item.role))
+        if (permissionGuild) {
+            hasPermission = await permissionGuild.commandpermissions.map((item: { command: any; role: string; }) => {
+              if (item.command == this._command && msgObject.member.roles.cache.has(item.role))
                 return 'TRUE';
-        }).filter(function (item: any) { return item; })[0];
-
-
-        if (!msgObject.member.hasPermission("ADMINISTRATOR") && !hasPermission) {
-            return;
+            }).filter(function (item: any) { return item; })[0];
+        }
+    
+        if (msgObject.member.hasPermission("ADMINISTRATOR")) {
+          hasPermission = "TRUE";
+        }
+    
+        if (hasPermission != "TRUE") {
+          return;
         }
 
         let feedUrl = args.splice(0).join(" ");

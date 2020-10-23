@@ -2,6 +2,7 @@ export let config = {
     "prefix": "?",
     "commands":[
         "help",
+        "setdefaulttwitch",
         "addtwitch",
         "removetwitch",
         "twitchlist",
@@ -11,6 +12,7 @@ export let config = {
         "rsslist",
         "prefix",
         "setprefix",
-        "setpermission"
+        "setpermission",
+        "unsetpermission"
     ],
 }

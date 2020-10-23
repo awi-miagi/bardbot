@@ -9,7 +9,8 @@ const Guild = guildMongoose.Schema({
     },
     rssfeeds: Array,
     twitchstreams: Array,
-    commandpermissions: Array
+    commandpermissions: Array,
+    defaultTwitchChannelID: String
 
 });
 

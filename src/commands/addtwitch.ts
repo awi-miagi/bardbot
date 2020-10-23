@@ -25,21 +25,35 @@ export default class addtwitch implements IBotCommand {
       return;
     }
 
+    let hasPermission = "FALSE";
+
     let permissionGuild = await GuildModel.findOne({ id: msgObject.guild.id, "commandpermissions.command": this._command });
-    let permissions = await permissionGuild.commandpermissions;
-    var hasPermission = "FALSE";
+    if (permissionGuild) {
+        hasPermission = await permissionGuild.commandpermissions.map((item: { command: any; role: string; }) => {
+          if (item.command == this._command && msgObject.member.roles.cache.has(item.role))
+            return 'TRUE';
+        }).filter(function (item: any) { return item; })[0];
+    }
 
-    hasPermission = permissions.map((item: { command: any; role: string; }) => {
-      if (item.command == this._command && msgObject.member.roles.cache.has(item.role))
-        return 'TRUE';
-    }).filter(function (item: any) { return item; })[0];
+    if (msgObject.member.hasPermission("ADMINISTRATOR")) {
+      hasPermission = "TRUE";
+    }
 
-
-    if (!msgObject.member.hasPermission("ADMINISTRATOR") && !hasPermission) {
+    if (hasPermission != "TRUE") {
       return;
     }
-    let channel = msgObject.mentions.channels.first();
-    if (!channel) return msgObject.reply('You did not specify a channel.');
+
+    let guildInfo = await GuildModel.findOne({ id: msgObject.guild.id});
+    if(!guildInfo && !msgObject.member.hasPermission("ADMINISTRATOR")) return msgObject.reply("Default twitch channel is not set.");
+    ;
+    let channel = msgObject.guild.channels.cache.get(guildInfo.defaultTwitchChannelID);
+    let mentionedChannel = msgObject.mentions.channels.first();
+
+    if(msgObject.member.hasPermission("ADMINISTRATOR") && mentionedChannel)
+    {
+      channel = mentionedChannel;
+    }
+    
     let arg = args.slice(1).join(" ").trim();
     let twitchName = "";
 

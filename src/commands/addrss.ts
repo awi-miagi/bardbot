@@ -25,19 +25,24 @@ export default class addrss implements IBotCommand {
             return;
         }
 
+        let hasPermission = "FALSE";
+
         let permissionGuild = await GuildModel.findOne({ id: msgObject.guild.id, "commandpermissions.command": this._command });
-        let permissions = await permissionGuild.commandpermissions;
-        var hasPermission = "FALSE";
+        if (permissionGuild) {
+            hasPermission = await permissionGuild.commandpermissions.map((item: { command: any; role: string; }) => {
+                if (item.command == this._command && msgObject.member.roles.cache.has(item.role))
+                    return 'TRUE';
+            }).filter(function (item: any) { return item; })[0];
+        }
 
-        hasPermission = permissions.map((item: { command: any; role: string; }) => {
-            if (item.command == this._command && msgObject.member.roles.cache.has(item.role))
-                return 'TRUE';
-        }).filter(function (item: any) { return item; })[0];
+        if (msgObject.member.hasPermission("ADMINISTRATOR")) {
+            hasPermission = "TRUE";
+        }
 
-
-        if (!msgObject.member.hasPermission("ADMINISTRATOR") && !hasPermission) {
+        if (hasPermission != "TRUE") {
             return;
         }
+
         let channel = msgObject.mentions.channels.first();
         if (!channel) return msgObject.reply('You did not specify a channel.');
         let url = args.splice(1).join(" ").trim();

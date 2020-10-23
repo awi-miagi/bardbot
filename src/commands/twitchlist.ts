@@ -18,10 +18,13 @@ export default class twitchlist implements IBotCommand {
 
   async runCommand(args: string[], msgObject: Discord.Message, client: Discord.Client, commands: IBotCommand[]) {
 
+    if (!msgObject.guild) {
+      return;
+    }
 
     //get guild info
     let guildInfo = await GuildModel.findOne({ id: msgObject.guild.id });
-    if(!guildInfo) return;
+    if (!guildInfo) return;
     let guildStreamers = guildInfo.twitchstreams;
     let streamersArray = new Array();
     let x = 0;
@@ -32,9 +35,9 @@ export default class twitchlist implements IBotCommand {
         let channelName = msgObject.guild.channels.cache.get(element.channelid).name;
         let streamers = await TwitchModel.findOne({ "userID": element.userID });
         let streamersName = await streamers.userName
-       
+
         msgObject.channel.send(`${streamersName} - #${channelName}`);
-  
+
       });
     }
 
@@ -54,6 +57,6 @@ export default class twitchlist implements IBotCommand {
 
     // msgObject.channel.send(msgEmbed);
 
-  
-}
+
+  }
 }
