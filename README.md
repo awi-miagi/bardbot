@@ -6,6 +6,7 @@ export let key = { <BR>
     "dbpassword" : "MONGO PASSWORD",<BR>
     "db" : "bardbotdb",<BR>
     "dbauthsource": "admin",<BR>
+    "twitchClientID" : "YOUR CLIENT ID",<BR>
     "twitchAccessToken" : "YOUR TWITCH ACCESS TOKEN"<BR>
 }
 
