@@ -1,7 +1,5 @@
 import * as Discord from "discord.js";
 import { IBotCommand, IBotCommandHelp } from "../api";
-import * as ConfigFile from "../config";
-import fs = require('fs');
 const GuildModel = require('../models/Guild');
 const RSSFeedModel = require('../models/RSSFeed');
 const { connect } = require('mongoose');

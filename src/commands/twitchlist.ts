@@ -1,12 +1,7 @@
 import * as Discord from "discord.js";
 import { IBotCommand, IBotCommandHelp } from "../api";
-import * as ConfigFile from "../config";
-import * as KeyFile from "../keys";
-import fs = require('fs');
 const TwitchModel = require('../models/TwitchStream');
 const GuildModel = require('../models/Guild');
-var axios = require('axios');
-
 
 
 export default class twitchlist implements IBotCommand {

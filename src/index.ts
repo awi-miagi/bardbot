@@ -2,25 +2,19 @@ import * as Discord from "discord.js";
 import * as ConfigFile from "./config";
 import * as KeyFile from "./keys";
 import { IBotCommand } from "./api";
-import * as fs from 'fs';
-import * as express from 'express';
 var bodyParser = require('body-parser');
-var crypto = require('crypto');
 var axios = require('axios');
-var FormData = require('form-data');
 const GuildModel = require('./models/Guild');
 const RSSFeedModel = require('./models/RSSFeed');
 const TwitchModel = require('./models/TwitchStream');
 const mongoose = require('mongoose');
 let Parser = require('rss-parser');
 let parser = new Parser();
-var app = express();
+
 const rssCheckTime = 5 * 60 * 1000; //1000ms = 1 second
 const twitchCheckTime = 60 * 1000
 
-// for parsing application/xwww-
-var urlEncodedParser = bodyParser.urlencoded({ extended: false });
-//form-urlencoded
+
 const client: Discord.Client = new Discord.Client();
 let commands: IBotCommand[] = [];
 
@@ -326,8 +320,3 @@ client.on("message", async (msg) => {
   //handle the command
   handleCommand(msg, prefix);
 })
-
-let listenport = 4002;
-app.listen(listenport, () => {
-  console.log("Server running on port " + listenport);
-});
